@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HOUSE CLEAN · Limpieza profesional en Bogotá</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --arena: #EBE3DB;
+    --arena-oscuro: #E2D6C9;
+    --taupe: #B9A592;
+    --carbon: #3A3229;
+    --carbon-suave: #5C5044;
+    --blanco: #FFFDFA;
+    --acento: #C2703D;      /* terracota, uso puntual */
+    --verde: #25D366;       /* WhatsApp */
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito Sans', sans-serif;
+    background: var(--arena);
+    color: var(--carbon);
+    line-height: 1.6;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+
+  img { max-width: 100%; display: block; }
+
+  /* ---------- BOTONES ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: .95rem 1.8rem;
+    border-radius: 999px;
+    border: 1.5px solid var(--carbon);
+    background: var(--carbon);
+    color: var(--arena);
+    font: 600 .95rem 'Nunito Sans', sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform .2s, background .2s, color .2s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-ghost { background: transparent; color: var(--carbon); }
+  .btn-ghost:hover { background: var(--carbon); color: var(--arena); }
+  .btn-block { width: 100%; }
+
+  /* ---------- HEADER ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--arena);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem clamp(1.2rem, 5vw, 4rem);
+    transition: box-shadow .3s;
+  }
+  header.scrolled { box-shadow: 0 1px 0 rgba(58,50,41,.12); }
+
+  .logo {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800;
+    font-size: 1.35rem;
+    letter-spacing: .02em;
+    text-decoration: none;
+    color: var(--carbon);
+  }
+
+  nav { display: flex; align-items: center; gap: 2rem; }
+  nav a.link {
+    color: var(--carbon);
+    text-decoration: none;
+    font-size: .95rem;
+    position: relative;
+  }
+  nav a.link::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 0; height: 1.5px;
+    background: var(--carbon);
+    transition: width .3s;
+  }
+  nav a.link:hover::after { width: 100%; }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: var(--carbon);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: clamp(3rem, 8vw, 6rem) clamp(1.2rem, 5vw, 4rem) 3rem;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3rem;
+    align-items: end;
+  }
+  .hero h1 {
+    font-size: clamp(2.8rem, 6.5vw, 5.4rem);
+  }
+  .hero-text {
+    font-size: 1rem;
+    color: var(--carbon-suave);
+    max-width: 420px;
+    justify-self: end;
+  }
+  .hero-text .btn { margin-top: 1.5rem; }
+
+  .gallery {
+    padding: 0 clamp(1.2rem, 5vw, 4rem);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+  .ph {
+    aspect-ratio: 3 / 4;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+    color: var(--arena);
+    font-size: .85rem;
+    font-weight: 600;
+  }
+  .ph::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(58,50,41,.55), transparent 60%);
+  }
+  .ph span { position: relative; z-index: 1; }
+  .ph-1 { background: linear-gradient(160deg, #D9C7B3, #A88E77); }
+  .ph-2 { background: linear-gradient(160deg, #C9B9A6, #7D6A58); }
+  .ph-3 { background: linear-gradient(160deg, #E4D7C8, #B39C86); }
+  .ph:hover { filter: brightness(1.04); }
+
+  /* ---------- SECCIONES ---------- */
+  section { padding: clamp(4rem, 9vw, 7rem) clamp(1.2rem, 5vw, 4rem); }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+  .section-head h2 { font-size: clamp(2.2rem, 4.5vw, 3.6rem); max-width: 14ch; }
+  .section-head p { max-width: 380px; color: var(--carbon-suave); }
+  .eyebrow {
+    display: inline-block;
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--carbon-suave);
+    margin-bottom: 1rem;
+  }
+
+  /* ---------- SERVICIOS ---------- */
+  .servicios { background: var(--arena); }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .card {
+    background: var(--arena-oscuro);
+    border-radius: 8px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    transition: transform .3s, box-shadow .3s;
+  }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px -20px rgba(58,50,41,.45); }
+  .card h3 { font-size: 1.6rem; margin-bottom: .8rem; }
+  .card .precio {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .card p { color: var(--carbon-suave); font-size: .95rem; flex: 1; margin-bottom: 1.5rem; }
+  .card .btn { align-self: flex-start; }
+
+  .planes {
+    margin-top: 3rem;
+    background: var(--taupe);
+    border-radius: 8px;
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .plan { text-align: left; }
+  .plan h4 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: .3rem;
+  }
+  .plan p { font-size: .9rem; color: var(--carbon); }
+
+  /* ---------- CALCULADORA ---------- */
+  .calc {
+    background: var(--carbon);
+    color: var(--arena);
+  }
+  .calc .eyebrow { color: var(--taupe); }
+  .calc-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .calc h2 { font-size: clamp(2.2rem, 4.5vw, 3.6rem); margin-bottom: 1rem; }
+  .calc-intro { color: var(--taupe); max-width: 420px; }
+
+  .calc-box {
+    background: var(--arena);
+    color: var(--carbon);
+    border-radius: 8px;
+    padding: 2.2rem;
+  }
+  .field { margin-bottom: 1.4rem; }
+  .field label {
+    display: block;
+    font-size: .85rem;
+    font-weight: 700;
+    margin-bottom: .5rem;
+  }
+  select, input, textarea {
+    width: 100%;
+    padding: .9rem 1.1rem;
+    border-radius: 999px;
+    border: 1.5px solid var(--carbon);
+    background: var(--blanco);
+    font: 400 .95rem 'Nunito Sans', sans-serif;
+    color: var(--carbon);
+    transition: box-shadow .2s;
+  }
+  textarea { border-radius: 16px; resize: vertical; min-height: 100px; }
+  select:focus, input:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(185,165,146,.45);
+  }
+  .resultado {
+    margin-top: 1.6rem;
+    padding: 1.4rem;
+    border-radius: 8px;
+    background: var(--arena-oscuro);
+    text-align: center;
+  }
+  .resultado small { color: var(--carbon-suave); }
+  .resultado strong {
+    display: block;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 2.2rem;
+    margin-top: .3rem;
+    transition: transform .2s;
+  }
+  .resultado strong.pulse { transform: scale(1.06); }
+  .calc-box .btn { margin-top: 1rem; }
+
+  /* ---------- CÓMO FUNCIONA ---------- */
+  .pasos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .paso {
+    border-top: 1.5px solid var(--carbon);
+    padding-top: 1.5rem;
+  }
+  .paso .num {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: var(--taupe);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .paso h3 { font-size: 1.4rem; margin-bottom: .5rem; }
+  .paso p { color: var(--carbon-suave); font-size: .95rem; }
+
+  /* ---------- GARANTÍAS ---------- */
+  .garantias { background: var(--arena-oscuro); }
+  .garantias-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem 3rem;
+    list-style: none;
+  }
+  .garantias-list li {
+    font-size: 1.1rem;
+    padding: 1.4rem 0;
+    border-bottom: 1px solid rgba(58,50,41,.2);
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .garantias-list li::before {
+    content: '→';
+    font-weight: 700;
+    color: var(--acento);
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq { max-width: 860px; }
+  .faq-item { border-bottom: 1.5px solid var(--carbon); }
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 1.4rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font: 700 1.15rem 'Bricolage Grotesque', sans-serif;
+    color: var(--carbon);
+    cursor: pointer;
+    text-align: left;
+  }
+  .faq-q .icono { font-size: 1.6rem; transition: transform .3s; }
+  .faq-item.open .icono { transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .35s ease;
+    color: var(--carbon-suave);
+  }
+  .faq-a p { padding-bottom: 1.4rem; }
+  .faq-item.open .faq-a { max-height: 300px; }
+
+  /* ---------- RESERVA (3 PASOS) ---------- */
+  .reserva { background: var(--taupe); }
+  .reserva-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .reserva h2 { font-size: clamp(2.4rem, 5vw, 4rem); margin-bottom: 1rem; }
+  .reserva-intro { color: var(--carbon); max-width: 380px; }
+
+  .progreso {
+    display: flex;
+    gap: .5rem;
+    margin-bottom: 1.5rem;
+  }
+  .progreso span {
+    flex: 1;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(58,50,41,.25);
+    transition: background .3s;
+  }
+  .progreso span.activo { background: var(--carbon); }
+
+  .form-card {
+    background: var(--arena);
+    border-radius: 8px;
+    padding: 2.2rem;
+  }
+  .paso-form { display: none; }
+  .paso-form.activo { display: block; animation: aparecer .4s ease; }
+  @keyframes aparecer {
+    from { opacity: 0; transform: translateX(16px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  .fila { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .form-nav .btn { flex: 1; }
+  .form-card .titulo-paso {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 1.6rem;
+    margin-bottom: 1.4rem;
+  }
+  .resumen {
+    background: var(--arena-oscuro);
+    border-radius: 8px;
+    padding: 1.2rem;
+    font-size: .95rem;
+    margin-bottom: 1rem;
+    line-height: 1.9;
+  }
+  .error { color: #A33A2A; font-size: .9rem; margin-top: .8rem; display: none; }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--carbon);
+    color: var(--arena);
+    padding: 3.5rem clamp(1.2rem, 5vw, 4rem) 2rem;
+  }
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(235,227,219,.2);
+  }
+  .footer-top h3 { font-size: clamp(2rem, 4vw, 3rem); }
+  .footer-top a {
+    color: var(--arena);
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 1.4rem;
+    text-decoration: none;
+  }
+  .footer-bottom {
+    padding-top: 1.5rem;
+    font-size: .85rem;
+    color: var(--taupe);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* ---------- WHATSAPP FLOTANTE ---------- */
+  .wa-flotante {
+    position: fixed;
+    right: 1.4rem;
+    bottom: 1.4rem;
+    z-index: 60;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: var(--verde);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    transition: transform .2s;
+    text-decoration: none;
+  }
+  .wa-flotante:hover { transform: scale(1.08); }
+  .wa-flotante svg { width: 30px; height: 30px; fill: #fff; }
+
+  /* ---------- REVELAR AL HACER SCROLL ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .8s ease, transform .8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 960px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-text { justify-self: start; }
+    .cards { grid-template-columns: 1fr 1fr; }
+    .planes { grid-template-columns: 1fr 1fr; }
+    .pasos { grid-template-columns: 1fr 1fr; }
+    .calc-wrap, .reserva-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+
+  @media (max-width: 720px) {
+    nav a.link { display: none; }
+    .menu-toggle { display: block; }
+    .gallery { grid-template-columns: 1fr; }
+    .ph { aspect-ratio: 16 / 10; }
+    .cards, .planes, .pasos, .garantias-list { grid-template-columns: 1fr; }
+    .fila { grid-template-columns: 1fr; }
+    .form-card { padding: 1.5rem; }
+    .calc-box { padding: 1.5rem; }
+  }
+  /* ---------- EDITOR VISUAL ---------- */
+  .editor-btn {
+    position: fixed; left: 1.4rem; bottom: 1.4rem; z-index: 70;
+    background: var(--carbon); color: var(--arena); border: none;
+    border-radius: 999px; padding: .8rem 1.2rem;
+    font: 700 .9rem 'Nunito Sans', sans-serif; cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,.25);
+  }
+  .editor-panel {
+    position: fixed; left: 1.4rem; bottom: 5rem; z-index: 70;
+    width: 280px; max-height: 70vh; overflow: auto;
+    background: #fff; color: #222; border-radius: 12px;
+    padding: 1.2rem; box-shadow: 0 16px 40px rgba(0,0,0,.25);
+    display: none; font: 400 .9rem 'Nunito Sans', sans-serif;
+  }
+  .editor-panel.abierto { display: block; }
+  .editor-panel h4 { font-family: 'Bricolage Grotesque', sans-serif; margin-bottom: .6rem; }
+  .editor-panel label { display: flex; justify-content: space-between; align-items: center; margin: .5rem 0; }
+  .editor-panel input[type=color] { width: 48px; height: 30px; border: none; background: none; cursor: pointer; }
+  .editor-panel hr { border: none; border-top: 1px solid #eee; margin: 1rem 0; }
+  .editor-panel p { font-size: .82rem; color: #666; margin-bottom: .8rem; }
+  .editor-panel .btn { width: 100%; font-size: .9rem; padding: .75rem; }
+  .modo-edicion [contenteditable="true"] { outline: 1px dashed var(--acento); outline-offset: 4px; cursor: text; }
+  /* ---------- CALENDARIO PROPIO ---------- */
+  .cal { position: relative; }
+  .cal input { cursor: pointer; padding-right: 2.8rem; }
+  .cal::after {
+    content: '📅';
+    position: absolute; right: 1rem; top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  .cal-pop {
+    display: none;
+    position: absolute; top: calc(100% + 8px); left: 0; right: 0;
+    z-index: 20;
+    background: var(--blanco);
+    border: 1.5px solid var(--carbon);
+    border-radius: 16px;
+    padding: 1rem;
+    box-shadow: 0 16px 40px -12px rgba(58,50,41,.35);
+  }
+  .cal-pop.abierto { display: block; }
+  .cal-head {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: .6rem;
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700;
+    text-transform: capitalize;
+  }
+  .cal-head button {
+    background: none; border: none; font-size: 1.2rem; cursor: pointer;
+    color: var(--carbon); padding: .2rem .7rem; border-radius: 999px;
+  }
+  .cal-head button:hover { background: var(--arena-oscuro); }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; }
+  .cal-dow { font-size: .75rem; font-weight: 700; color: var(--carbon-suave); padding: .3rem 0; }
+  .cal-dia {
+    border: none; background: none; padding: .5rem 0; border-radius: 999px;
+    font: 600 .9rem 'Nunito Sans', sans-serif; color: var(--carbon); cursor: pointer;
+  }
+  .cal-dia:hover:not(:disabled) { background: var(--arena-oscuro); }
+  .cal-dia.hoy { outline: 1.5px solid var(--taupe); }
+  .cal-dia.elegido { background: var(--carbon); color: var(--arena); }
+  .cal-dia:disabled { color: #bbb; cursor: not-allowed; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <a href="#" class="logo">HOUSE CLEAN</a>
+  <nav>
+    <a href="#servicios" class="link">Servicios</a>
+    <a href="#calcula" class="link">Calcula tu precio</a>
+    <a href="#como" class="link">Cómo funciona</a>
+    <a href="#faq" class="link">Preguntas</a>
+    <a href="#reserva" class="btn">Reservar</a>
+  </nav>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+</header>
+
+<!-- HERO -->
+<section class="hero" style="padding-bottom:0">
+  <div>
+    <span class="eyebrow">Limpieza profesional · Bogotá</span>
+    <h1>Tu hogar limpio, tu tiempo libre.</h1>
+  </div>
+  <div class="hero-text">
+    <p>Personal seleccionado y verificado, horarios confirmados y reemplazo garantizado. Tú decides cuándo, nosotros nos encargamos del resto.</p>
+    <a href="#reserva" class="btn">Reservar ahora</a>
+  </div>
+</section>
+
+<div class="gallery reveal" style="margin-top:3rem">
+  <!-- Reemplaza estos bloques por tus propias fotos: <img src="ruta.jpg" alt="..."> -->
+  <div class="ph ph-1"><span>Cocina</span></div>
+  <div class="ph ph-2"><span>Superficies</span></div>
+  <div class="ph ph-3"><span>Habitaciones</span></div>
+</div>
+
+<!-- SERVICIOS -->
+<section class="servicios" id="servicios">
+  <div class="section-head reveal">
+    <div>
+      <span class="eyebrow">Nuestros servicios</span>
+      <h2>Elige la jornada que necesitas</h2>
+    </div>
+    <p>Cada servicio tiene un alcance claro. Sabes exactamente qué incluye antes de confirmar.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card reveal">
+      <h3>Jornada básica</h3>
+      <div class="precio">$110.000 – $120.000</div>
+      <p>Barrer, trapear, sacudir, limpieza de baños y cocina, tender camas y organización básica.</p>
+      <a href="#reserva" class="btn btn-ghost">Reservar</a>
+    </div>
+    <div class="card reveal">
+      <h3>Jornada estándar</h3>
+      <div class="precio">$125.000 – $140.000</div>
+      <p>Todo lo de la básica con más detalle en cada área, organización general y superficies a fondo.</p>
+      <a href="#reserva" class="btn btn-ghost">Reservar</a>
+    </div>
+    <div class="card reveal">
+      <h3>Limpieza profunda</h3>
+      <div class="precio">$160.000 – $220.000</div>
+      <p>Cocina, baños, nevera, ventanas y organización profunda. Ideal después de mudanza u obra.</p>
+      <a href="#reserva" class="btn btn-ghost">Reservar</a>
+    </div>
+  </div>
+
+  <div class="planes reveal">
+    <div class="plan"><h4>Única vez</h4><p>Un servicio cuando lo necesites.</p></div>
+    <div class="plan"><h4>Semanal</h4><p>4 servicios al mes, precio especial.</p></div>
+    <div class="plan"><h4>Quincenal</h4><p>2 servicios al mes, precio especial.</p></div>
+    <div class="plan"><h4>Mensual</h4><p>1 servicio al mes, mismo día y personal.</p></div>
+  </div>
+</section>
+
+<!-- CALCULADORA -->
+<section class="calc" id="calcula">
+  <div class="calc-wrap">
+    <div class="reveal">
+      <span class="eyebrow">Calculadora</span>
+      <h2>¿Cuánto cuesta tu limpieza?</h2>
+      <p class="calc-intro">Elige el servicio y el tamaño de tu casa. El precio se actualiza al instante. El valor final se confirma por WhatsApp según el estado del lugar.</p>
+    </div>
+
+    <div class="calc-box reveal">
+      <div class="field">
+        <label for="calcServicio">Tipo de servicio</label>
+        <select id="calcServicio">
+          <option value="basica">Jornada básica</option>
+          <option value="estandar">Jornada estándar</option>
+          <option value="profunda">Limpieza profunda</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="calcTamano">Tamaño del inmueble</label>
+        <select id="calcTamano">
+          <option value="pequeno">Pequeño (1–2 habitaciones)</option>
+          <option value="mediano">Mediano (3 habitaciones)</option>
+          <option value="grande">Grande (4 o más)</option>
+        </select>
+      </div>
+
+      <div class="resultado">
+        <small>Precio estimado</small>
+        <strong id="precioResultado">$110.000</strong>
+      </div>
+
+      <a href="#reserva" class="btn btn-block" id="calcReservar">Reservar este servicio</a>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section id="como">
+  <div class="section-head reveal">
+    <div>
+      <span class="eyebrow">Proceso</span>
+      <h2>Cómo funciona</h2>
+    </div>
+    <p>Cuatro pasos. Sin llamadas interminables ni cambios de última hora.</p>
+  </div>
+  <div class="pasos">
+    <div class="paso reveal"><div class="num">01</div><h3>Reservas</h3><p>Eliges servicio, fecha y dirección en menos de dos minutos.</p></div>
+    <div class="paso reveal"><div class="num">02</div><h3>Confirmamos</h3><p>Te asignamos una persona verificada y te escribimos por WhatsApp.</p></div>
+    <div class="paso reveal"><div class="num">03</div><h3>Limpiamos</h3><p>Llegamos a la hora acordada con productos y protocolo de servicio.</p></div>
+    <div class="paso reveal"><div class="num">04</div><h3>Disfrutas</h3><p>Revisas el resultado, calificas y el pago queda registrado.</p></div>
+  </div>
+</section>
+
+<!-- GARANTÍAS -->
+<section class="garantias">
+  <div class="section-head reveal">
+    <div>
+      <span class="eyebrow">Compromiso</span>
+      <h2>Servicio respaldado</h2>
+    </div>
+  </div>
+  <ul class="garantias-list">
+    <li class="reveal">Personal seleccionado con verificación de antecedentes</li>
+    <li class="reveal">Si algo no quedó bien, lo repetimos sin costo</li>
+    <li class="reveal">Reemplazo garantizado si el trabajador no puede asistir</li>
+    <li class="reveal">Cancelación sin penalidad con 48 horas de anticipación</li>
+    <li class="reveal">Precio claro antes de confirmar, sin cobros sorpresa</li>
+    <li class="reveal">Atención directa por WhatsApp y teléfono</li>
+  </ul>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-head reveal">
+    <div>
+      <span class="eyebrow">Preguntas</span>
+      <h2>Preguntas frecuentes</h2>
+    </div>
+  </div>
+  <div class="faq">
+    <div class="faq-item reveal">
+      <button class="faq-q">¿Qué incluye la limpieza básica? <span class="icono">+</span></button>
+      <div class="faq-a"><p>Tender camas, barrer y trapear, sacudir muebles, limpiar baños (lavamanos, sanitario, espejo), limpiar cocina por fuera y dejar en orden las superficies.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">¿Puedo pedir siempre la misma persona? <span class="icono">+</span></button>
+      <div class="faq-a"><p>En servicios recurrentes intentamos mantener el mismo día y, cuando es posible, la misma persona.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">¿Qué pasa si el trabajador no puede asistir? <span class="icono">+</span></button>
+      <div class="faq-a"><p>Te avisamos con anticipación y asignamos un reemplazo sin costo adicional.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">¿Qué productos utilizan? <span class="icono">+</span></button>
+      <div class="faq-a"><p>Productos profesionales. Si tienes alguna preferencia o alergia, avísanos al reservar.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">¿Cómo se paga? <span class="icono">+</span></button>
+      <div class="faq-a"><p>Transferencia, Daviplata o efectivo. Los planes recurrentes pueden pagarse de forma mensual.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">¿Atienden apartamentos y casas? <span class="icono">+</span></button>
+      <div class="faq-a"><p>Sí, ambos. Ajustamos la jornada según el tamaño y el estado del lugar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVA EN 3 PASOS -->
+<section class="reserva" id="reserva">
+  <div class="reserva-wrap">
+    <div class="reveal">
+      <span class="eyebrow">Reserva</span>
+      <h2>Reserva en tres pasos</h2>
+      <p class="reserva-intro">Al final se abrirá WhatsApp con tu solicitud ya escrita. Solo tienes que enviarla.</p>
+    </div>
+
+    <div class="form-card reveal">
+      <div class="progreso">
+        <span class="activo"></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <form id="reservaForm" novalidate>
+        <!-- Paso 1 -->
+        <div class="paso-form activo" data-paso="1">
+          <div class="titulo-paso">¿Qué necesitas?</div>
+          <div class="field">
+            <label for="servicio">Servicio</label>
+            <select id="servicio" required>
+              <option value="">Selecciona</option>
+              <option value="Jornada básica">Jornada básica</option>
+              <option value="Jornada estándar">Jornada estándar</option>
+              <option value="Limpieza profunda">Limpieza profunda</option>
+              <option value="Plan semanal">Plan semanal</option>
+              <option value="Plan quincenal">Plan quincenal</option>
+              <option value="Plan mensual">Plan mensual</option>
+            </select>
+          </div>
+          <div class="fila">
+            <div class="field">
+              <label for="fecha">Fecha</label>
+              <div class="cal"><input type="text" id="fecha" readonly placeholder="Elige una fecha" required><div class="cal-pop" id="calPop"></div></div>
+            </div>
+            <div class="field">
+              <label for="hora">Hora</label>
+              <select id="hora" required>
+                <option value="">Selecciona</option>
+                <option>8:00 a.m.</option>
+                <option>10:00 a.m.</option>
+                <option>12:00 m.</option>
+                <option>2:00 p.m.</option>
+                <option>4:00 p.m.</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="tamano">Tamaño del inmueble</label>
+            <select id="tamano" required>
+              <option value="">Selecciona</option>
+              <option>Apartamento pequeño (1–2 hab.)</option>
+              <option>Apartamento o casa mediana (3 hab.)</option>
+              <option>Casa grande (4 o más hab.)</option>
+            </select>
+          </div>
+          <div class="form-nav">
+            <button type="button" class="btn" data-siguiente>Continuar</button>
+          </div>
+          <p class="error" id="error1">Completa servicio, fecha, hora y tamaño.</p>
+        </div>
+
+        <!-- Paso 2 -->
+        <div class="paso-form" data-paso="2">
+          <div class="titulo-paso">Tus datos</div>
+          <div class="field">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" required>
+          </div>
+          <div class="field">
+            <label for="telefono">WhatsApp</label>
+            <input type="tel" id="telefono" placeholder="300 000 0000" required>
+          </div>
+          <div class="field">
+            <label for="direccion">Dirección en Bogotá</label>
+            <input type="text" id="direccion" placeholder="Calle, carrera, barrio, apto" required>
+          </div>
+          <div class="field">
+            <label for="productos">¿Qué productos usamos?</label>
+            <select id="productos">
+              <option value="empresa">Los productos de HOUSE CLEAN</option>
+              <option value="hogar">Los productos del hogar</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="mascotas">¿Tienes mascotas?</label>
+            <select id="mascotas">
+              <option>No</option>
+              <option>Sí</option>
+            </select>
+          </div>
+          <div class="form-nav">
+            <button type="button" class="btn btn-ghost" data-anterior>Atrás</button>
+            <button type="button" class="btn" data-siguiente>Continuar</button>
+          </div>
+          <p class="error" id="error2">Nombre, WhatsApp y dirección son obligatorios.</p>
+        </div>
+
+        <!-- Paso 3 -->
+        <div class="paso-form" data-paso="3">
+          <div class="titulo-paso">Revisa y envía</div>
+          <div class="resumen" id="resumen"></div>
+          <div class="field">
+            <label for="observaciones">Observaciones (opcional)</label>
+            <textarea id="observaciones" placeholder="Algo que debamos saber del lugar"></textarea>
+          </div>
+          <div class="form-nav">
+            <button type="button" class="btn btn-ghost" data-anterior>Atrás</button>
+            <button type="submit" class="btn">Enviar por WhatsApp</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contacto">
+  <div class="footer-top">
+    <h3>HOUSE CLEAN</h3>
+    <div style="display:flex; gap:2rem; flex-wrap:wrap">
+      <a href="https://wa.me/573208065354" target="_blank">WhatsApp</a>
+      <a href="tel:+573208065354">Teléfono</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 HOUSE CLEAN · Bogotá, Colombia</span>
+    <span>+57 320 806 5354</span>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOTANTE -->
+<a class="wa-flotante" href="https://wa.me/573208065354" target="_blank" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8.9-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.6-1.3.1-.2 0-.3 0-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.6 2.6 0 0 0-.8 2 4.5 4.5 0 0 0 .9 2.4 10.4 10.4 0 0 0 4 3.5c1.5.6 2.1.7 2.8.6a2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c-.1-.1-.2-.2-.4-.3z"/></svg>
+</a>
+
+<script>
+  // Header con sombra al hacer scroll
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 10);
+  });
+
+  // Revelar elementos al entrar en pantalla
+  const observador = new IntersectionObserver((entradas) => {
+    entradas.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observador.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => observador.observe(el));
+
+  // FAQ acordeón
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      item.classList.toggle('open');
+    });
+  });
+
+  // ---------- CALCULADORA ----------
+  // Cambia estos valores para ajustar tus precios.
+  const PRECIOS = {
+    basica:   { pequeno: 110000, mediano: 115000, grande: 120000 },
+    estandar: { pequeno: 125000, mediano: 132500, grande: 140000 },
+    profunda: { pequeno: 160000, mediano: 190000, grande: 220000 }
+  };
+  const selServicio = document.getElementById('calcServicio');
+  const selTamano   = document.getElementById('calcTamano');
+  const resultado   = document.getElementById('precioResultado');
+  const btnCalc     = document.getElementById('calcReservar');
+
+  function formato(n) {
+    return '$' + n.toLocaleString('es-CO');
+  }
+
+  function actualizarPrecio() {
+    const precio = PRECIOS[selServicio.value][selTamano.value];
+    resultado.textContent = formato(precio);
+    resultado.classList.add('pulse');
+    setTimeout(() => resultado.classList.remove('pulse'), 200);
+
+    // Pasa la selección al formulario de reserva
+    const nombres = { basica: 'Jornada básica', estandar: 'Jornada estándar', profunda: 'Limpieza profunda' };
+    btnCalc.dataset.servicio = nombres[selServicio.value];
+  }
+  selServicio.addEventListener('change', actualizarPrecio);
+  selTamano.addEventListener('change', actualizarPrecio);
+
+  btnCalc.addEventListener('click', () => {
+    const map = { basica: 'Jornada básica', estandar: 'Jornada estándar', profunda: 'Limpieza profunda' };
+    document.getElementById('servicio').value = map[selServicio.value];
+    const tamanos = {
+      pequeno: 'Apartamento pequeño (1–2 hab.)',
+      mediano: 'Apartamento o casa mediana (3 hab.)',
+      grande:  'Casa grande (4 o más hab.)'
+    };
+    document.getElementById('tamano').value = tamanos[selTamano.value];
+  });
+
+  // ---------- CALENDARIO PROPIO ----------
+  (function () {
+    const input = document.getElementById('fecha');
+    const pop = document.getElementById('calPop');
+    if (!input || !pop) return;
+
+    const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    const DIAS = ['L','M','X','J','V','S','D'];
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+    let vista = new Date(hoy.getFullYear(), hoy.getMonth(), 1);
+    let elegida = null;
+
+    function pintar() {
+      const anio = vista.getFullYear();
+      const mes = vista.getMonth();
+      const primerDia = (new Date(anio, mes, 1).getDay() + 6) % 7; // lunes = 0
+      const diasMes = new Date(anio, mes + 1, 0).getDate();
+      let html = `<div class="cal-head"><button type="button" data-mes="-1">‹</button><span>${MESES[mes]} ${anio}</span><button type="button" data-mes="1">›</button></div><div class="cal-grid">`;
+      DIAS.forEach(d => { html += `<div class="cal-dow">${d}</div>`; });
+      for (let i = 0; i < primerDia; i++) html += '<span></span>';
+      for (let d = 1; d <= diasMes; d++) {
+        const f = new Date(anio, mes, d);
+        const clases = ['cal-dia'];
+        if (f.getTime() === hoy.getTime()) clases.push('hoy');
+        if (elegida && f.getTime() === elegida.getTime()) clases.push('elegido');
+        const bloqueado = f < hoy ? 'disabled' : '';
+        html += `<button type="button" class="${clases.join(' ')}" data-dia="${d}" ${bloqueado}>${d}</button>`;
+      }
+      html += '</div>';
+      pop.innerHTML = html;
+    }
+
+    function formatear(f) {
+      return `${f.getDate()} de ${MESES[f.getMonth()]} de ${f.getFullYear()}`;
+    }
+
+    input.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const abrir = !pop.classList.contains('abierto');
+      pop.classList.toggle('abierto', abrir);
+      if (abrir) pintar();
+    });
+
+    pop.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const btnMes = e.target.closest('[data-mes]');
+      if (btnMes) {
+        const nueva = new Date(vista.getFullYear(), vista.getMonth() + Number(btnMes.dataset.mes), 1);
+        const primerMesPermitido = new Date(hoy.getFullYear(), hoy.getMonth(), 1);
+        if (nueva >= primerMesPermitido) { vista = nueva; pintar(); }
+        return;
+      }
+      const btnDia = e.target.closest('[data-dia]');
+      if (btnDia && !btnDia.disabled) {
+        elegida = new Date(vista.getFullYear(), vista.getMonth(), Number(btnDia.dataset.dia));
+        input.value = formatear(elegida);
+        input.dataset.iso = `${elegida.getFullYear()}-${String(elegida.getMonth() + 1).padStart(2, '0')}-${String(elegida.getDate()).padStart(2, '0')}`;
+        pop.classList.remove('abierto');
+      }
+    });
+
+    document.addEventListener('click', () => pop.classList.remove('abierto'));
+  })();
+
+  // ---------- RESERVA EN 3 PASOS ----------
+  const pasos = document.querySelectorAll('.paso-form');
+  const barras = document.querySelectorAll('.progreso span');
+  let pasoActual = 1;
+
+  function irAPaso(n) {
+    pasoActual = n;
+    pasos.forEach(p => p.classList.toggle('activo', Number(p.dataset.paso) === n));
+    barras.forEach((b, i) => b.classList.toggle('activo', i < n));
+    if (n === 3) mostrarResumen();
+  }
+
+  function validarPaso(n) {
+    if (n === 1) {
+      const ok = ['servicio','fecha','hora','tamano'].every(id => document.getElementById(id).value);
+      document.getElementById('error1').style.display = ok ? 'none' : 'block';
+      return ok;
+    }
+    if (n === 2) {
+      const ok = ['nombre','telefono','direccion'].every(id => document.getElementById(id).value.trim());
+      document.getElementById('error2').style.display = ok ? 'none' : 'block';
+      return ok;
+    }
+    return true;
+  }
+
+  document.querySelectorAll('[data-siguiente]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (validarPaso(pasoActual)) irAPaso(pasoActual + 1);
+    });
+  });
+  document.querySelectorAll('[data-anterior]').forEach(btn => {
+    btn.addEventListener('click', () => irAPaso(pasoActual - 1));
+  });
+
+  // ---------- PRECIO DE LA RESERVA ----------
+  // Cargo adicional si el cliente usa productos de la empresa (0 = incluido en el precio)
+  const CARGO_PRODUCTOS_EMPRESA = 0;
+
+  const SERVICIO_A_CLAVE = {
+    'Jornada básica': 'basica',
+    'Jornada estándar': 'estandar',
+    'Limpieza profunda': 'profunda'
+  };
+  const TAMANO_A_CLAVE = {
+    'Apartamento pequeño (1–2 hab.)': 'pequeno',
+    'Apartamento o casa mediana (3 hab.)': 'mediano',
+    'Casa grande (4 o más hab.)': 'grande'
+  };
+
+  function calcularPrecioReserva() {
+    const servicio = SERVICIO_A_CLAVE[document.getElementById('servicio').value];
+    const tamano = TAMANO_A_CLAVE[document.getElementById('tamano').value];
+    if (!servicio || !tamano) return null;
+    const base = PRECIOS[servicio][tamano];
+    const usaEmpresa = document.getElementById('productos').value === 'empresa';
+    return usaEmpresa ? base + CARGO_PRODUCTOS_EMPRESA : base;
+  }
+
+  function precioTexto() {
+    const precio = calcularPrecioReserva();
+    return precio ? formato(precio) : 'A confirmar por WhatsApp';
+  }
+
+  function productosTexto() {
+    return document.getElementById('productos').value === 'empresa'
+      ? 'Los de HOUSE CLEAN'
+      : 'Los del hogar';
+  }
+
+  function mostrarResumen() {
+    const v = id => document.getElementById(id).value;
+    document.getElementById('resumen').innerHTML =
+      `<strong>Servicio:</strong> ${v('servicio')}<br>` +
+      `<strong>Fecha:</strong> ${v('fecha')} · ${v('hora')}<br>` +
+      `<strong>Inmueble:</strong> ${v('tamano')}<br>` +
+      `<strong>Nombre:</strong> ${v('nombre')}<br>` +
+      `<strong>WhatsApp:</strong> ${v('telefono')}<br>` +
+      `<strong>Dirección:</strong> ${v('direccion')}<br>` +
+      `<strong>Mascotas:</strong> ${v('mascotas')}<br>` +
+      `<strong>Productos:</strong> ${productosTexto()}<br>` +
+      `<strong>Valor estimado:</strong> ${precioTexto()}`;
+  }
+
+  document.getElementById('reservaForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const v = id => document.getElementById(id).value;
+    const mensaje =
+      `*NUEVA RESERVA · HOUSE CLEAN*\n\n` +
+      `*Servicio:* ${v('servicio')}\n` +
+      `*Fecha:* ${v('fecha')} a las ${v('hora')}\n` +
+      `*Inmueble:* ${v('tamano')}\n` +
+      `*Nombre:* ${v('nombre')}\n` +
+      `*WhatsApp:* ${v('telefono')}\n` +
+      `*Dirección:* ${v('direccion')}\n` +
+      `*Mascotas:* ${v('mascotas')}\n` +
+      `*Productos:* ${productosTexto()}\n` +
+      `*Valor estimado:* ${precioTexto()}\n` +
+      `*Observaciones:* ${v('observaciones') || 'Ninguna'}`;
+    const URL_RESERVAS = 'https://script.google.com/macros/s/AKfycbzJfGPe_fK7jcP-wtRAfSGzy900JBRk3fN6nqR7zloxRtHYg8J9Yl7b7f2eZ_CjIHy8/exec';
+    const HORAS = { '8:00 a.m.': 8, '10:00 a.m.': 10, '12:00 m.': 12, '2:00 p.m.': 14, '4:00 p.m.': 16 };
+    const datos = {
+      source: 'web',
+      nombre: v('nombre'),
+      telefono: v('telefono'),
+      servicio: SERVICIO_A_CLAVE[v('servicio')] || v('servicio'),
+      fecha: document.getElementById('fecha').dataset.iso,
+      hora: HORAS[v('hora')],
+      tamano: TAMANO_A_CLAVE[v('tamano')],
+      productos: v('productos'),
+      direccion: v('direccion'),
+      observaciones: v('observaciones')
+    };
+    // no-cors: Apps Script recibe los datos, pero el navegador no puede leer la respuesta
+    fetch(URL_RESERVAS, { method: 'POST', mode: 'no-cors', body: JSON.stringify(datos) });
+    document.getElementById('reservaForm').innerHTML = `
+      <div class="resumen" style="font-size:1rem">
+        <strong>¡Reserva recibida!</strong><br><br>
+        Te escribiremos por WhatsApp a <strong>${datos.telefono}</strong> para confirmar la fecha y la persona asignada.
+      </div>`;
+  });
+
+  // Menú móvil simple: lleva a servicios
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    document.getElementById('servicios').scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
+<!-- EDITOR VISUAL -->
+<button class="editor-btn" id="editorBtn">✎ Editar</button>
+<div class="editor-panel" id="editorPanel">
+  <h4>Editor visual</h4>
+  <p>Activa el editor y haz clic en cualquier texto para cambiarlo.</p>
+  <label>Fondo principal <input type="color" data-var="--arena"></label>
+  <label>Fondo secundario <input type="color" data-var="--arena-oscuro"></label>
+  <label>Café medio <input type="color" data-var="--taupe"></label>
+  <label>Texto principal <input type="color" data-var="--carbon"></label>
+  <label>Texto suave <input type="color" data-var="--carbon-suave"></label>
+  <label>Acento <input type="color" data-var="--acento"></label>
+  <hr>
+  <button class="btn" id="copiarBtn">Descargar página final</button>
+</div>
+
+<script id="editor">
+(function () {
+  const btn = document.getElementById('editorBtn');
+  const panel = document.getElementById('editorPanel');
+  const copiar = document.getElementById('copiarBtn');
+  const EDITABLES = 'h1,h2,h3,h4,p,.eyebrow,.logo,.precio,.plan p,.garantias-list li,.footer-top h3,.footer-bottom span,.ph span,.resultado small,.titulo-paso,.paso .num';
+
+  function modoEdicion(on) {
+    document.body.classList.toggle('modo-edicion', on);
+    document.querySelectorAll(EDITABLES).forEach(el => {
+      if (el.closest('#editorPanel')) return;
+      el.contentEditable = on ? 'true' : 'false';
+    });
+  }
+
+  btn.addEventListener('click', () => {
+    const abrir = !panel.classList.contains('abierto');
+    panel.classList.toggle('abierto', abrir);
+    modoEdicion(abrir);
+    btn.textContent = abrir ? '✕ Cerrar editor' : '✎ Editar';
+  });
+
+  const estilo = getComputedStyle(document.documentElement);
+  document.querySelectorAll('#editorPanel input[type=color]').forEach(inp => {
+    inp.value = estilo.getPropertyValue(inp.dataset.var).trim();
+    inp.addEventListener('input', () => {
+      document.documentElement.style.setProperty(inp.dataset.var, inp.value);
+    });
+  });
+
+  copiar.addEventListener('click', () => {
+    const clon = document.documentElement.cloneNode(true);
+    clon.querySelector('#editor')?.remove();
+    clon.querySelector('#editorPanel')?.remove();
+    clon.querySelector('#editorBtn')?.remove();
+    clon.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+    clon.querySelector('body').classList.remove('modo-edicion');
+    const html = '<!DOCTYPE html>\n' + clon.outerHTML;
+    const url = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'house-clean.html';
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+})();
+</script>
+</body>
+</html>
