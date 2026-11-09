@@ -151,12 +151,15 @@
     background: linear-gradient(to top, rgba(58,50,41,.55), transparent 60%);
   }
   .ph span { position: relative; z-index: 1; }
-  .ph-1 { background: linear-gradient(160deg, #D9C7B3, #A88E77); }
-  .ph-2 { background: linear-gradient(160deg, #C9B9A6, #7D6A58); }
-  .ph-3 { background: linear-gradient(160deg, #E4D7C8, #B39C86); }
-  .ph:hover { filter: brightness(1.04); }
+.ph img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ph-1 { background: linear-gradient(160deg, #D9C7B3, #A88E77); }
 
-  /* ---------- SECCIONES ---------- */
   section { padding: clamp(4rem, 9vw, 7rem) clamp(1.2rem, 5vw, 4rem); }
   .section-head {
     display: flex;
@@ -178,7 +181,6 @@
     margin-bottom: 1rem;
   }
 
-  /* ---------- SERVICIOS ---------- */
   .servicios { background: var(--arena); }
   .cards {
     display: grid;
